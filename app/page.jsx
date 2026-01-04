@@ -25,7 +25,7 @@ export default function GeneratePage() {
   const [qr, setQr] = useState("");
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
-  
+  const link = "https://qrcode-mauve-psi.vercel.app/invite/undefined"
   // PIN MODAL STATES
   const [isPinModalOpen, setIsPinModalOpen] = useState(false);
   const [enteredPin, setEnteredPin] = useState("");
@@ -64,7 +64,7 @@ export default function GeneratePage() {
       const data = await res.json();
       setInvite(data);
 
-      const link = `${window.location.origin}/invite/${data.code}`;
+      const link = `${link}/invite/${data.code}`;
       const qrImg = await QRCode.toDataURL(link, { 
         width: 600,
         margin: 2,
