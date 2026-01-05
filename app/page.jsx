@@ -64,7 +64,8 @@ export default function GeneratePage() {
       setInvite(data);
       const linkorigen = "https://qrcode-mauve-psi.vercel.app"
 
-      const link = `${linkorigen}/invite/${data.code}`;
+      // const link = `${window.location.origin}/invite/${data.code}`;
+      const link = `${process.env.NEXT_PUBLIC_BASE_URL}/invite/${data.code}`;
       const qrImg = await QRCode.toDataURL(link, { 
         width: 600,
         margin: 2,
@@ -84,7 +85,8 @@ export default function GeneratePage() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const inviteLink = invite ? `${window.location.origin}/invite/${invite.code}` : "";
+  // const inviteLink = invite ? `${window.location.origin}/invite/${invite.code}` : "";
+  const inviteLink = invite ? `${process.env.NEXT_PUBLIC_BASE_URL}/invite/${invite.code}` : "";
 
   return (
     <div className="min-h-screen bg-[#f8fafc] py-12 px-4 relative">
